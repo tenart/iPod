@@ -32,7 +32,7 @@
 }
 
 #clickwheel_container {
-    background: url(../assets/clickwheel_scratched.png) center center / 100%;
+    background: url(../assets/clickwheel_scratched_hd.png) center center / 100%;
     height: 292px;
     width: 292px;
     border-radius: 100%;
@@ -40,10 +40,11 @@
     margin: 0 auto;
     margin-top: 48px;
     box-shadow:     
-        inset 0 -1px 3px rgba(0, 0, 0, 0.3),
-        inset -1px -1px 0 0 rgba(0, 0, 0, 0.2),
-        inset 0 1px 1px rgba(255, 255, 255, 0.8),
-        0 -2px 1px rgba(0, 0, 0, 0.2);
+        /* inset 0 -1px 3px rgba(0, 0, 0, 0.3), */
+        inset -0.5px -1px 0 0 rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 0px rgba(255, 255, 255, 0.9),
+        0 -2px 1px rgba(68, 25, 25, 0.05),
+        0 2px 1px 0px rgba(0, 0, 0, 0.1);
 }
 
 #screen {
