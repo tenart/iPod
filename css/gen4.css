@@ -1,0 +1,113 @@
+@font-face {
+    font-family: Chicago;
+    src: url(../assets/Chicago.ttf);
+}
+
+#composite {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -300px;
+    margin-left: -180px;
+    width: 360px;
+    height: 600px;
+}
+
+#overlay {
+    position: absolute;
+    height: 260px;
+    width: 360px;
+    background: url(../assets/front_cover_scratched.png) center / 100% 100%;
+    z-index: 9;
+    pointer-events: none;
+}
+
+#screen_container {
+    width: 360px;
+    height: 260px;
+    background-color: #d1d1c9;
+    font-family: 'Chicago';
+    font-size: 12pt;
+    box-sizing: border-box;
+}
+
+#clickwheel_container {
+    background: url(../assets/clickwheel_scratched.png) center center / 100%;
+    height: 292px;
+    width: 292px;
+    border-radius: 100%;
+    z-index: 99;
+    margin: 0 auto;
+    margin-top: 48px;
+    box-shadow:     
+        inset 0 -1px 3px rgba(0, 0, 0, 0.3),
+        inset -1px -1px 0 0 rgba(0, 0, 0, 0.2),
+        inset 0 1px 1px rgba(255, 255, 255, 0.8),
+        0 -2px 1px rgba(0, 0, 0, 0.2);
+}
+
+#screen {
+    width: 160px;
+    height: 128px;
+    position: absolute;
+    image-rendering: pixelated;
+    text-rendering: geometricPrecision;
+    overflow: hidden;
+    margin-left: -80px;
+    margin-top: -64px;
+    top: 130px;
+    left: 180px;
+    transform: scale(1.7);
+    opacity: 0.6;
+    mix-blend-mode: multiply;
+    filter: blur(0px);
+}
+
+#title_bar {
+    height: 18px;
+    border-bottom: 1px solid black;
+    display: grid;
+    grid-template-columns: 30px auto 30px;
+}
+
+#title {
+    grid-column: 2;
+    text-align: center;
+    transform: translateY(2px);
+    
+}
+
+#battery {
+    height: 18px;
+    width: 25px;
+    background-image: url(../assets/battery_cycle.gif);
+    grid-column: 3;
+    margin-left: 2px;
+}
+
+#menu_scroll {
+    height: 108px;
+    width: 100%;
+    margin-top: 1px;
+}
+
+.menu_item {
+    height: 18px;
+    padding-left: 7px;
+    line-height: 18px;
+    transition: background-color 0.2s;
+}
+
+.menu_item.arrow {
+    background: url(../assets/arrow_black.gif) right center no-repeat;
+}
+
+.menu_item.active.arrow {
+    background: black url(../assets/arrow_white.gif) right center no-repeat;
+}
+
+.menu_item.active {
+    color: white;
+    background-color: black;
+}
+
