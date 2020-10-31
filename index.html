@@ -6,8 +6,10 @@
         <link href="css/gen4.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/howler.core.min.js"></script>
+        <script src="js/hammer.min.js"></script>
         <script src="js/main.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     </head>
     <body>
         <div id="composite">
@@ -31,8 +33,12 @@
                 </main>
             </div>
             <div id="clickwheel_container">
-                
+                <div id="clickwheel_visual">
+                    <div id="cw_outer"></div>
+                    <div id="cw_inner"></div>
+                </div>
             </div>
         </div>
+        <div id="cw_touch"></div>
     </body>
 </html>
