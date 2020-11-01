@@ -19,18 +19,37 @@ $(function() {
 
     cw.on("panleft panright panup pandown tap press", function(ev) {
 
-        var offset = {
-            x: parseFloat($("#cw_outer").css("left")),
-            y: parseFloat($("#cw_outer").css("top"))
+        var touch = {
+            x: ev.center.x - parseInt($("#cw_outer").css("left")),
+            y: ev.center.y - parseInt($("#cw_outer").css("top"))
         }
 
+        var center = {
+            x: 146,
+            y:146
+        }
+
+        var angle = parseInt(angleDeg(touch, center));
+
         $("#cw_touch").css("opacity", 1);
-        $("#cw_touch").css("margin-left", (ev.center.x - offset.x) + "px");
-        $("#cw_touch").css("margin-top", (ev.center.y - offset.y) + "px");
+        $("#cw_needle").css("opacity", 1);
+
+        $("#cw_touch").css("left", (touch.x) + "px");
+        $("#cw_touch").css("top", (touch.y) + "px");
+        $("#cw_needle").css("transform", "rotate(" + angle + "deg)");
+
+        $("#cw_x span").text( (touch.x) + "px" );
+        $("#cw_y span").text( (touch.y) + "px" );
+        $("#cw_angle span").text( angle );
 
         if( ev.isFinal ) {
             $("#cw_touch").css("opacity", 0);
+            $("#cw_needle").css("opacity", 0);
         }
     });
 
 })
+
+function angleDeg(p1, p2) {
+    return Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
+}
