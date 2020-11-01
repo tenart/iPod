@@ -123,8 +123,10 @@ body {
         0 2px 1px 0px rgba(0, 0, 0, 0.1);
 }
 
-#clickwheel_visual * {
-    box-sizing: border-box;
+#clickwheel_visual {
+    pointer-events: none;
+    overflow: hidden;
+    image-rendering: pixelated;
 }
 
 #cw_outer {
@@ -132,7 +134,11 @@ body {
     height: 292px;
     width: 292px;
     position: absolute;
-    border: 2px solid red;
+    left: calc(50% - 146px);
+    top: calc(50% + 8px);
+    box-shadow: inset 0 0 0 1px red;
+    overflow: hidden;
+    
 }
 
 #cw_inner {
@@ -141,18 +147,18 @@ body {
     width: 92px;
     margin: 100px;
     position: absolute;
-    border: 2px solid red;
+    box-shadow: inset 0 0 0 1px red;
+    background: url(../assets/red_crosshair.png) center center no-repeat;
 }
 
 #cw_touch {
     height: 40px;
     width: 40px;
-    border: 2px solid blue;
     border-radius: 100%;
     transform: translate( -20px, -20px );
-    position: absolute;
-    top: 0;
-    left: 0;
+    margin: 80px 0 0 80px;
     box-sizing: border-box;
+    box-shadow: inset 0 0 0 1px red;
+    background: url(../assets/red_crosshair.png) center center no-repeat;
 }
 
