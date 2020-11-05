@@ -14,15 +14,18 @@ $(function() {
 
     var clickwheel_container = document.getElementById("clickwheel_container");
     var cwHammer = new Hammer(clickwheel_container);
+    
     var clickwheel = {
         x: 0,
         y: 0,
         angle: 0,
-        direction: ""
+        direction: "",
+        start: 0,
+        difference: 0
     }
 
     cwHammer.get("pan").set({ direction: Hammer.DIRECTION_ALL });
-    cwHammer.on("panleft panright panup pandown tap press", function(ev) {
+    cwHammer.on("panleft panright panup pandown", function(ev) {
 
         var center = {
             x: 146,
@@ -52,11 +55,47 @@ $(function() {
         $("#cw_y span").text( clickwheel.y );
         $("#cw_angle span").text( (clickwheel.angle) );
         $("#cw_direction span").text( (clickwheel.direction) );
+        
+        clickwheel.difference = Math.abs(clickwheel.angle - clickwheel.start) % 24;
+
+        $("#cw_extra span").text( clickwheel.difference );
+        
+
+
+        if( clickwheel.difference < 5 ) {
+            $("#test").css("background-color", "blue"  );
+            click_sfx.play();
+
+            if( clickwheel.direction == ">>") {
+                clickwheel.start = clickwheel.angle + 20;
+            } else {
+                clickwheel.start = clickwheel.angle - 20;
+            }
+            
+        } else {
+            $("#test").css("background-color", "red" );
+        }
+
     });
 
     cwHammer.on("panstart", function(ev) {
         $("#cw_touch").css("opacity", 1);
         $("#cw_needle").css("opacity", 1);
+
+
+        var center = {
+            x: 146,
+            y:146
+        }
+
+        clickwheel.x = ev.center.x - parseInt($("#cw_outer").css("left"));
+        clickwheel.y = ev.center.y - parseInt($("#cw_outer").css("top"));
+
+        clickwheel.angle = parseInt(anglePoints(clickwheel, center)) + 179;
+        clickwheel.start = clickwheel.angle;
+        clickwheel.difference = Math.abs(clickwheel.angle - clickwheel.start) % 24;
+
+        $("#cw_extra span").text( clickwheel.difference );
     })
 
     cwHammer.on("panend pancancel", function(ev) {

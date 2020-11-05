@@ -178,7 +178,7 @@ body {
     font-family: monospace;
     display: grid;
     width: 290px;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto;
     background-color: rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
     padding: 4px;
@@ -193,3 +193,14 @@ body {
     color: white;
 }
 
+#test {
+    height: 32px;
+    width: 32px;
+    background-color: red;
+    position: absolute;
+    display: none;
+}
+
+.debug {
+    opacity: 0;
+}
