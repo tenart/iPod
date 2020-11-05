@@ -56,24 +56,13 @@ $(function() {
         $("#cw_angle span").text( (clickwheel.angle) );
         $("#cw_direction span").text( (clickwheel.direction) );
         
-        clickwheel.difference = Math.abs(clickwheel.angle - clickwheel.start) % 24;
+        clickwheel.difference = Math.abs(clickwheel.angle - clickwheel.start);
 
         $("#cw_extra span").text( clickwheel.difference );
         
-
-
-        if( clickwheel.difference < 5 ) {
-            $("#test").css("background-color", "blue"  );
+        if( clickwheel.difference > 24 ) {
+            clickwheel.start = clickwheel.angle;
             click_sfx.play();
-
-            if( clickwheel.direction == ">>") {
-                clickwheel.start = clickwheel.angle + 20;
-            } else {
-                clickwheel.start = clickwheel.angle - 20;
-            }
-            
-        } else {
-            $("#test").css("background-color", "red" );
         }
 
     });
@@ -93,7 +82,7 @@ $(function() {
 
         clickwheel.angle = parseInt(anglePoints(clickwheel, center)) + 179;
         clickwheel.start = clickwheel.angle;
-        clickwheel.difference = Math.abs(clickwheel.angle - clickwheel.start) % 24;
+        clickwheel.difference = Math.abs(clickwheel.angle - clickwheel.start);
 
         $("#cw_extra span").text( clickwheel.difference );
     })
