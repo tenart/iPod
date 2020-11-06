@@ -60,7 +60,7 @@ $(function() {
 
         $("#cw_extra span").text( clickwheel.difference );
         
-        if( clickwheel.difference > 24 ) {
+        if( clickwheel.difference > 24 && clickwheel.difference <= 336) {
             clickwheel.start = clickwheel.angle;
             click_sfx.play();
         }
