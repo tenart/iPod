@@ -24,6 +24,12 @@ $(function() {
         difference: 0
     }
 
+    var menuPage = {
+        name: "nameID",
+        length: 6,
+        current: 0,
+    }
+
     cwHammer.get("pan").set({ direction: Hammer.DIRECTION_ALL });
     cwHammer.on("panleft panright panup pandown", function(ev) {
 
@@ -63,6 +69,12 @@ $(function() {
         if( clickwheel.difference > 24 && clickwheel.difference <= 336) {
             clickwheel.start = clickwheel.angle;
             click_sfx.play();
+            if( clickwheel.direction == ">>" && menuPage.current < menuPage.length-1 ) {
+                menuPage.current += 1;
+            } else if( clickwheel.direction == "<<" && menuPage.current > 0 ) {
+                menuPage.current -= 1;
+            }
+            console.log(menuPage.current);
         }
 
     });
@@ -94,8 +106,17 @@ $(function() {
         $("#cw_direction span").text( (clickwheel.direction) );
     })
 
+    function mainLoop() {
+        $(".menu_item").removeClass("active");
+        var active = ".menu_item:nth-child(" + (menuPage.current + 1) + ")"
+        $(active).addClass("active");
+    }
+
+    setInterval(mainLoop, 1);
+
 })
 
 function anglePoints(p1, p2) {
     return Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
 }
+
