@@ -4,14 +4,6 @@ $(function() {
         src: ['assets/click_sfx.mp3']
     });
 
-
-    $(".menu_item").mouseenter(function() {
-        $(".menu_item").removeClass("active");
-        $(this).addClass("active");
-        click_sfx.play();
-    })
-
-
     var clickwheel_container = document.getElementById("clickwheel_container");
     var cwHammer = new Hammer(clickwheel_container);
     

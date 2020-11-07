@@ -56,7 +56,6 @@ body {
     transform: scale(1.7);
     opacity: 0.6;
     mix-blend-mode: multiply;
-    filter: blur(0px);
 }
 
 #title_bar {
@@ -91,7 +90,7 @@ body {
     height: 18px;
     padding-left: 7px;
     line-height: 18px;
-    transition: background-color 0.2s;
+    transition: color 0.2s, background-color 0.2s;
 }
 
 .menu_item.arrow {
